@@ -33,7 +33,7 @@ entity Task {=psl
 psl=}
 
 entity Book {=psl
-  id  Int @id @defalut(autoincrement())
+  id        Int       @id @default(autoincrement())
   title String
   tag String
   autor String
