@@ -1,6 +1,6 @@
 import { type Task } from "wasp/entities";
 import { HttpError } from "wasp/server";
-import { type CreateTask, type UpdateTask, type DeleteTasks } from "wasp/server/operations";
+import { type CreateTask, type UpdateTask, type DeleteTasks,type MarkTaskAsDone } from "wasp/server/operations";
 
 type CreateArgs = Pick<Task, "description">;
 
@@ -50,3 +50,14 @@ export const deleteTasks: DeleteTasks<Task["id"][]> = async (
     },
   });
 };
+export const markTaskAsDone: MarkTaskAsDone<Pick<Task, 'id'>, void> = async(
+  {id},
+  context
+) => {
+  context.entities.Task.update({
+    where: {
+      id
+    },
+    data: { isDone: true },
+  });
+}

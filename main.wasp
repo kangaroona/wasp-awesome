@@ -9,10 +9,13 @@ app waspAwesome {
     methods: {
       usernameAndPassword: {}, // This is a very naive implementation, use 'email' in production instead
       //google: {}, // https://wasp-lang.dev/docs/integrations/google
-      //gitHub: {}, // https://wasp-lang.dev/docs/integrations/github
-      //email: {} // https://wasp-lang.dev/docs/guides/email-auth
+      // gitHub: {}, // https://wasp-lang.dev/docs/integrations/github
+      // email: {} // https://wasp-lang.dev/docs/guides/email-auth
     },
     onAuthFailedRedirectTo: "/login",
+  },
+  client: {
+    rootComponent: import Root from "@src/Root.tsx",
   }
 }
 
@@ -69,11 +72,18 @@ query getAllTasks {
   fn: import { getAllTasks } from "@src/tasks/queries.js",
   entities:[Task]
 }
+query  getFilteredTasks{
+  fn: import {getFilteredTasks} from "@src/tasks/queries",
+  entities: [Task]
+}
 action createTask {
   fn: import { createTask } from "@src/tasks/actions",
   entities: [Task]
 }
-
+action markTaskAsDone {
+  fn: import { markTaskAsDone } from "@src/tasks/actions",
+  entities: [Task]
+}
 action updateTask {
   fn: import { updateTask } from "@src/tasks/actions",
   entities: [Task]

@@ -8,7 +8,7 @@ export function LoginPage() {
       {/** Wasp has built-in auth forms & flows, which you can customize or opt-out of, if you wish :)
        * https://wasp-lang.dev/docs/guides/auth-ui
        */}
-      <LoginForm />
+      <LoginForm socialLayout="vertical"/>
       <br />
       <span>
         I don't have an account yet (<Link to="/signup">go to signup</Link>).

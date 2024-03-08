@@ -2,14 +2,14 @@ import React, { FormEventHandler, FormEvent } from "react";
 import { type Task } from "wasp/entities";
 import { type AuthUser, getUsername } from "wasp/auth";
 import { logout } from "wasp/client/auth";
-import { createTask, updateTask, deleteTasks, useQuery, getTasks } from "wasp/client/operations";
+import { createTask, updateTask, deleteTasks, useQuery, getTasks,getFilteredTasks } from "wasp/client/operations";
 import waspLogo from "./waspLogo.png";
 
 import "./Main.css";
 
 export const MainPage = ({ user }: { user: AuthUser }) => {
   const { data: tasks, isLoading, error } = useQuery(getTasks);
-
+  //const { data: tasks, isLoading, error } = useQuery(getFilteredTasks,{isDone:true});
   if (isLoading) return "Loading...";
   if (error) return "Error: " + error;
 
